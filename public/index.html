@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>edit courses</title>
+    <style>
+        body{
+            background: #3b3941;
+        }
+        table {
+            margin: auto;
+            width: 50%;
+            border-radius: 50px;
+            background: #3b3941;
+            box-shadow:  20px 20px 60px #323037,
+            -20px -20px 60px #44424b;
+        }
+
+        th {
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 50px;
+            background: #3b3941;
+            box-shadow:  20px 20px 60px #323037,
+            -20px -20px 60px #44424b;
+        }
+
+        td {
+            border-bottom: 1px solid #555;
+            color: #fff;
+            padding: 8px;
+
+        }
+        tr{
+            transition: 0.3s;
+        }
+
+        tr:hover {
+            background-color: #666;
+        }
+
+
+    </style>
+</head>
+<body>
+<table id="coursesTable" class="table neumorphism">
+    <tr>
+        <th>Course ID</th>
+        <th>Course Name</th>
+        <th>Instructor ID</th>
+        <th>Options</th>
+    </tr>
+</table>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    function deleteRow(id) {
+        const data = { message: id.toString() };
+        fetch(`/delete-row?id=${id}`).then(function(response) {
+            console.log(response);
+        });
+    }
+    function removeRow(row, id) {
+        const table = document.getElementById('coursesTable');
+        let confirm = parseInt(prompt("WARNING. DELETING A COURSE IS UNREVERSABLE. TO CONFIRM THAT YOU WANT TO DELETE THIS COURSE, PLEASE TYPE IN THE COURSE'S ID"));
+        if(confirm == id){
+            table.deleteRow(row.rowIndex);
+            deleteRow(id);
+            alert("Deletion complete")
+        }else{
+            alert("course ID does not match. Deletion cancelled")
+        }
+    }
+
+axios.post('/course_data')
+        .then(response => {
+            var courses = response.data;
+            const table = document.getElementById('coursesTable');
+            for (let i = 0; i < courses.length; i++) {
+                const course = courses[i];
+                const row = document.createElement('tr');
+                const courseIDCell = document.createElement('td');
+                courseIDCell.textContent = course.courseID;
+                row.appendChild(courseIDCell);
+                const courseNameCell = document.createElement('td');
+                courseNameCell.textContent = course.course_name;
+                row.appendChild(courseNameCell);
+                const instructorIDCell = document.createElement('td');
+                instructorIDCell.textContent = course.instructorID;
+                row.appendChild(instructorIDCell);
+                if (course.instructorID === 123456) {
+                    const removeButton = document.createElement('button');
+                    removeButton.textContent = 'Remove';
+                    removeButton.addEventListener('click', function() {
+                        removeRow(this.parentNode.parentNode, course.courseID);
+                    });
+                    const buttonsCell = document.createElement('td');
+                    buttonsCell.appendChild(removeButton);
+                    row.appendChild(buttonsCell);
+                }
+                table.appendChild(row);
+            }
+
+        })
+
+
+</script>
+</body>
+</html>

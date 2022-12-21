@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style>
+        /* Add some style to the login page */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f1f1f1;
+        }
+        form {
+            max-width: 300px;
+            margin: 10px auto;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        a {
+            color: #00bfff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h1>Login</h1>
+<h3 style="color: crimson">INVALID CREDENTIALS. TRY AGAIN</h3>
+<!-- Display error messages if any -->
+<p id="error-message" style="color: red;"></p>
+<form id="login-form" action="/submit" method="post">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username"><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br>
+    <button type="submit">Login</button>
+</form>
+<br>
+<p>Don't have an account? <a href="#" id="signup-link">Sign up here</a></p>
+<!-- The signup form will be displayed in a modal window -->
+<div id="signup-modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+            <label for="new-username">Username:</label><br>
+            <input type="text" id="new-username" name="new-username"><br>
+            <label for="new-password">Password:</label><br>
+            <input type="password" id="new-password" name="new-password"><br>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</div>
