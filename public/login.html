@@ -1,62 +1,89 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login Page</title>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <style>
-        /* Add some style to the login page */
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f1f1f1;
-        }
-        form {
-            max-width: 300px;
-            margin: 10px auto;
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 20px;
-        }
-        input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
+        * {
             box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        button[type="submit"] {
+        body {
+            background-color: #23272A;
+        }
+        .login {
+            width: 400px;
+            background-color: whitesmoke;
+            box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+            margin: 100px auto;
+            border-radius: 20px;
+        }
+        .login h1 {
+            text-align: center;
+            color: #5b6574;
+            font-size: 24px;
+            padding: 20px 0 20px 0;
+            border-bottom: 1px solid #F6F6F6;
+        }
+        .login form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding-top: 20px;
+        }
+        .login form label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background-color: #404EED;
+            color: #ffffff;
+        }
+        .login form input[type="password"], .login form input[type="text"] {
+            width: 310px;
+            height: 50px;
+            border: 1px solid #dee0e4;
+            margin-bottom: 20px;
+            padding: 0 15px;
+        }
+        .login form input[type="submit"] {
             width: 100%;
-            background-color: #4CAF50;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 4px;
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #404EED;
+            border: 0;
             cursor: pointer;
+            font-weight: bold;
+            color: #ffffff;
+            transition: background-color 0.2s;
+            border-radius: 20px;
         }
-        button[type="submit"]:hover {
-            background-color: #45a049;
-        }
-        a {
-            color: #00bfff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
+        .login form input[type="submit"]:hover {
+            background-color: #5865F2;
+            transition: background-color 0.7s;
         }
     </style>
 </head>
 <body>
-<h1>Login</h1>
-<!-- Display error messages if any -->
-<p id="error-message" style="color: red;"></p>
-<form id="login-form" action="/submit" method="post">
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username"><br>
-    <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password"><br>
-    <button type="submit">Login</button>
-</form>
-<br>
+<div class="login">
+    <h1>Login to database</h1>
+    <form action="/submit" method="post">
+        <label for="username">
+            <i class="fas fa-user"></i>
+        </label>
+        <input type="text" name="username" placeholder="Username" id="username" required>
+        <label for="password">
+            <i class="fas fa-lock"></i>
+        </label>
+        <input type="password" name="password" placeholder="Password" id="password" required>
+        <input type="submit" value="Login">
+    </form>
+</div>
+</body>
+</html>
 
