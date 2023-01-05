@@ -10,7 +10,7 @@ const mysql = require('mysql');
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'D24$m?!tdy',
+    password: '',
     database: 'ud'
 });
 connection.connect((err) => {
@@ -24,7 +24,7 @@ connection.connect((err) => {
 const courses = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'D24$m?!tdy',
+    password: '',
     database: 'courses'
 });
 courses.connect((err) => {
@@ -39,7 +39,7 @@ courses.connect((err) => {
 const userdata = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'D24$m?!tdy',
+    password: '',
     database: 'user_data'
 });
 userdata.connect((err) => {
